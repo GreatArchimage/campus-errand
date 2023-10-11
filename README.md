@@ -1,6 +1,15 @@
 # campus-errand
 校园跑腿微信小程序
 
+## 项目功能
+
++ 发布跑腿订单
++ 接单
++ 修改订单
++ 查看订单详情
++ 订单评价
++ 登录
+
 ## 项目预览
 
 ![image](https://github.com/GreatArchimage/campus-errand/assets/112754131/8b2d195f-5770-4931-abee-2ed56a88b441)
