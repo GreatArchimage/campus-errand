@@ -1,0 +1,8 @@
+/* pages/publish/publish.wxss */
+
+.submit-btn{
+  margin-top: 100rpx;
+  width: 300rpx;
+  background-color: #ee0a24;
+  color: white;
+}

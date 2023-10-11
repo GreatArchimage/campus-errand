@@ -1,0 +1,46 @@
+<!--pages/publish/publish.wxml-->
+<view class="container">
+  <form catchsubmit="formSubmit">
+    <van-field label="标题" required placeholder="请输入标题" name="title" value="{{title}}"/>
+    <van-cell-group>
+      <van-field label="在哪里取件" required value="{{ pickUpAddress }}" name="pickUpAddress">
+        <van-button slot="button" size="small" type="primary" bindtap="onChooseLocation" data-btn-index="1">
+          选择地址
+        </van-button>
+      </van-field>
+      <!-- <van-field label="具体地址" required placeholder="请输入" /> -->
+      <van-field label="送到哪里去" required value="{{ arrivalAddress }}" name="arrivalAddress">
+        <van-button slot="button" size="small" type="primary" bindtap="onChooseLocation" data-btn-index="2">
+          选择地址
+        </van-button>
+      </van-field>
+      <!-- <van-field label="具体地址" required placeholder="请输入" /> -->
+      <van-cell title="送达时间" is-link bind:click="onClickArrivalTime" value="{{ arrivalTime }}" />
+      <van-popup show="{{ showArrivalTimePopup }}" bind:close="onCloseArrivalTimePopup" position="bottom">
+        <van-datetime-picker type="time" filter="{{ filter }}" title="送达时间" min-hour="6" bind:confirm="onConfirmArrivalTime" bind:cancel="onCloseArrivalTimePopup"/>
+      </van-popup>
+    </van-cell-group>
+    <van-cell-group title="物品信息">
+      <van-cell title="物品规格" is-link bind:click="onClickItemSize" value="{{ itemSize }}">
+      </van-cell>
+      <van-popup show="{{ showSizesPopup }}" bind:close="onCloseSizesPopup" position="bottom">
+        <van-picker columns="{{ sizes }}" title="物品规格" show-toolbar bind:confirm="onConfirmItemSize" bind:cancel="onCloseSizesPopup"/>
+      </van-popup>
+    </van-cell-group>
+    <van-cell-group>
+      <van-field label="联系电话" required placeholder="请输入手机号" name="tel" value="{{tel}}"/>
+      <van-field label="相关信息" type="textarea" placeholder="请提供必要的信息" autosize maxlength="30" show-word-limit name="message" value="{{message}}"/>
+    </van-cell-group>
+
+    <van-cell title="跑腿费(￥)">
+      <van-stepper value="{{reward}}" step="0.5" decimal-length="{{ 1 }}" bind:change="onChangeReward"/>
+    </van-cell>
+
+    <block wx:if="{{id}}">
+      <button form-type="submit" class="submit-btn">修改订单</button>
+    </block>
+    <block wx:else>
+      <button form-type="submit" class="submit-btn">发起订单</button>
+    </block>
+  </form>
+</view>

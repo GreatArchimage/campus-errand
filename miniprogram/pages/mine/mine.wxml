@@ -1,0 +1,29 @@
+<!--pages/mine/mine.wxml-->
+<view class="container">
+  
+  <van-cell-group inset>
+    <van-cell is-link center bindtap="onShowDialog">
+      <van-image slot="icon" round width="100rpx" height="100rpx" src="{{hasUserInfo?userInfo.avatarUrl:''}}"
+      style="margin-right: 10rpx;" />
+      <view slot="title" style="font-weight: bold;">
+        <block wx:if="{{!hasUserInfo}}">
+          <text>立即登录</text>
+        </block>
+        <block wx:else>
+          <text>{{userInfo.nickName}}</text>
+        </block>
+      </view>
+    </van-cell>
+  </van-cell-group>
+
+  <van-dialog use-slot title="用户登录" show="{{ showDialog }}" bind:confirm="onConfirm" bind:close="onClose">
+    <view class="avatar-container">
+      <button class="avatar-wrapper" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <van-image class="avatar" src="{{userInfo.avatarUrl}}"/>
+      </button>
+      <input type="nickname" name="nickname" placeholder="请输入昵称" bindblur="nicknameBlur" value="{{userInfo.nickName}}" />
+	  </view>
+  </van-dialog>
+
+
+</view>

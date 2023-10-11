@@ -1,0 +1,47 @@
+/* pages/mine/mine.wxss */
+
+page{
+    height: 100%;
+}
+
+.container{
+    height: 100%;
+    padding-top: 150rpx;
+    /* padding-bottom: 100rpx; */
+    /* background-color:#f3f3f3; */
+    background: linear-gradient(to bottom, #19be96 0%, #19be96 20%,#f3f3f3 20%);
+}
+
+.avatar-container
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.avatar-wrapper {
+  padding: 0;
+  width: 50px !important;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+ 
+.avatar {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+.van-image{
+  width: 50px !important;
+  height: 50px !important;
+}
+ 
+.avatar-container input{
+
+   height: 80rpx;
+   width: 450rpx;
+   text-align: center;
+   margin: 0 auto;
+}
+

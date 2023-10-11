@@ -1,0 +1,46 @@
+/* pages/orders/orders.wxss */
+.container{
+    padding-bottom: 100rpx;
+    background-color:#f3f3f3;
+}
+
+.order-list{
+    margin: 20rpx 30rpx;
+}
+
+.van-card{
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.van-card .card-title{
+    display: flex;
+    justify-content: space-between;
+}
+
+.van-card .card-title text:first-child{
+    font-weight: bold;
+}
+
+
+.van-card .card-foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.van-card .card-foot .info{
+    display: inline;
+
+}
+
+.van-card .card-foot .info text:first-child{
+    display: block;
+    text-align: left;
+    font-weight: bold;
+}
+
+.van-card .card-foot .info text:last-child{
+    color: #808080;
+}

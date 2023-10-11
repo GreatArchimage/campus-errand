@@ -1,0 +1,44 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="container">
+
+    <scroll-view scroll-y>
+        <van-cell-group >
+            <van-cell title="标题" value="{{order.title}}" />
+            <van-cell title="订单类型" value="{{order.category}}" />
+            <van-cell title="取件地址" value="{{order.pickUpAddress}}" />
+            <van-cell title="送件地址" value="{{order.arrivalAddress}}" />
+            <van-cell title="要求送达时间" value="{{order.arrivalTime}}" />
+            <van-cell title="物品规格" value="{{order.itemSize}}" />
+            <van-cell title="下单用户" value="{{order.userInfos[0].nickName}}" />
+            <van-cell title="联系电话" value="{{order.tel}}" />
+            <van-cell title="相关信息" label="{{order.message}}" />
+            <van-cell title="报酬" value="￥{{order.reward}}" />
+            <van-cell title="发布时间" value="{{tools.formatTime(order.addtime)}}" />
+            <block wx:if="{{order.status!='待接单'}}">
+                <van-cell title="接单人" value="{{order.orderTakers[0].nickName}}" />
+                <van-cell title="接单时间" value="{{tools.formatTime(order.orderTakingTime)}}" />
+            </block>
+            <block wx:if="{{order.status=='已完成'}}">
+                <view class="rate">
+                    <text>评分</text>
+                    <van-rate
+                        value="{{order.rate}}"
+                            size="25"
+                            color="#ffd21e"
+                            void-icon="star"
+                            void-color="#eee"
+                            readonly
+                            />
+                </view>
+                <van-cell title="评价" label="{{order.comment}}" />
+            </block>
+        </van-cell-group>
+
+    </scroll-view>
+
+    <view class="footer">
+        <van-button wx:if="{{order.status!='已完成'}}" type="danger" bindtap="handleFinishOrder">已完成订单</van-button>
+    </view>
+
+</view>

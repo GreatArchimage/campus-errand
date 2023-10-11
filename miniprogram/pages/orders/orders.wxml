@@ -1,0 +1,73 @@
+<!--pages/orders/orders.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="container">
+  <van-tabs active="{{ active }}" sticky swipeable>
+    <van-tab title="我发布的">
+      <view class="order-list">
+        <van-card wx:for="{{publishedOrders}}" wx:key="index" price="{{item.reward}}" bindtap="toEditOrder"
+           data-order-id="{{item._id}}" data-index="{{index}}">
+          <view slot="title" class="card-title">
+            <text>{{item.title}}</text>
+            <text>{{item.status}}</text>
+          </view>
+          <view slot="footer" class="card-foot">
+            <view class="info">
+              <text>发布时间：{{tools.formatTime(item.addtime)}}</text>
+            </view>
+            <view>
+              <van-button wx:if="{{item.status == '待接单'}}" type="danger" round size="small" catchtap="handleCancelOrder" 
+              data-index="{{index}}"
+              data-order-id="{{item._id}}">取消</van-button>
+              <van-button wx:if="{{item.status == '已完成'}}" type="danger" round size="small" catchtap="toComment"
+              data-order-id="{{item._id}}">评价</van-button>
+            </view>
+          </view>
+          <view slot="bottom">
+          </view>
+          <view slot="tags">
+            <van-tag type="danger">{{item.category}}</van-tag>
+            <van-tag type="primary">{{item.itemSize}}</van-tag>
+          </view>
+          <view slot="price-top">
+            <text style="display: block;">取件地址：{{item.pickUpAddress}}</text>
+            <text>送达地址：{{item.arrivalAddress}}</text>
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+    
+    <van-tab title="我帮助的">
+      <view class="order-list">
+        <van-card wx:for="{{acceptedOrders}}" wx:key="index" price="{{item.reward}}"
+          thumb="{{item.userInfos[0].avatarUrl}}" bindtap="toOrderDetail"
+           data-order-id="{{item._id}}">
+          <view slot="title" class="card-title">
+            <text>{{item.title}}</text>
+            <text>{{item.status}}</text>
+          </view>
+          <view slot="footer" class="card-foot">
+            <view class="info">
+              <text>{{item.userInfos[0].nickName}}</text>
+              <text>发布时间：{{tools.formatTime(item.addtime)}}</text>
+            </view>
+            <view>
+              <!-- catchtap阻止事件冒泡 -->
+              <van-button wx:if="{{item.status == '进行中'}}" type="danger" round size="small" catchtap="handleFinishOrder" data-index="{{index}}"
+              data-order-id="{{item._id}}">已完成订单</van-button>
+            </view>
+          </view>
+          <view slot="bottom">
+          </view>
+          <view slot="tags">
+            <van-tag type="danger">{{item.category}}</van-tag>
+            <van-tag type="primary">{{item.itemSize}}</van-tag>
+          </view>
+          <view slot="price-top">
+            <text style="display: block;">取件地址：{{item.pickUpAddress}}</text>
+            <text>送达地址：{{item.arrivalAddress}}</text>
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

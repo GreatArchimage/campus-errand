@@ -1,0 +1,17 @@
+<!--pages/orders/comment/comment.wxml-->
+<view>
+    <form bindsubmit="onSubmit">
+        <view class="rate">
+            <text>评分</text>
+            <van-rate
+                    size="25"
+                    color="#ffd21e"
+                    void-icon="star"
+                    void-color="#eee"
+                    name="rate"
+                    />
+        </view>
+        <van-field label="评价" type="textarea" placeholder="请输入你对此次服务的评价" autosize maxlength="50" show-word-limit name="comment"/>
+        <van-button type="info" formType="submit">提交评价</van-button>
+    </form>
+</view>
